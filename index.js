@@ -23,6 +23,7 @@ const client = new Client({
    ],
    partials: [User, Message, ThreadMember],
 });
+require('dotenv').config();
 
 const { loadEvents } = require('./Handlers/eventHandler');
 
@@ -61,7 +62,7 @@ client.subCommands = new Collection();
 client.events = new Collection();
 
 loadEvents(client);
-db.connectDB(client.config.MongoURI);
+db.connectDB(process.env.MONGO_URI);
 
 //anti crash
 process.on('unhandledRejection', (reason, p) => {

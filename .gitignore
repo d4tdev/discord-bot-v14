@@ -1,3 +1,4 @@
 /node_modules
-config.dev.json
+configDev.json
 package-lock.json
+.env.dev
