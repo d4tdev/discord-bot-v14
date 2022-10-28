@@ -32,8 +32,6 @@ const db = require('./Config/connect');
 const { DisTube } = require('distube');
 const { SpotifyPlugin } = require('@distube/spotify');
 
-client.config = require('./config.json');
-
 let spotifyOptions = {
    parallel: true,
    emitEventsAfterFetching: false,
@@ -48,10 +46,10 @@ client.distube = new DisTube(client, {
    plugins: [new SpotifyPlugin(spotifyOptions)],
 });
 
-if (client.config.spotifyApi.enabled) {
+if (process.env.SPOTIFY_ENABLE) {
    spotifyOptions.api = {
-      clientId: client.config.spotifyApi.clientId,
-      clientSecret: client.config.spotifyApi.clientSecret,
+      clientId: process.env.SPOTIFY_CLIENT_ID,
+      clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
    };
 }
 
@@ -72,4 +70,4 @@ process.on('uncaughtException', (err, origin) => {
    console.log(err, origin);
 });
 
-client.login(client.config.token);
+client.login(process.env.TOKEN);

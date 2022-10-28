@@ -1,5 +1,5 @@
 const { ChatInputCommandInteraction } = require('discord.js');
-let config = require('../../config.json');
+require('dotenv').config();
 
 module.exports = {
    name: 'interactionCreate',
@@ -19,7 +19,7 @@ module.exports = {
          });
       }
 
-      if (command.developer && interaction.user.id !== config.DevID) {
+      if (command.developer && interaction.user.id !== process.env.DEV_ID) {
          return interaction.reply({
             content: 'This command is only for the developer.',
             ephemeral: true,
