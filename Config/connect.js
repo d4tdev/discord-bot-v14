@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-let config = require('../config.json');
+let config = require('../config.json')
 
 const connectDB = async () => {
    try {
