@@ -61,7 +61,7 @@ client.subCommands = new Collection();
 client.events = new Collection();
 
 loadEvents(client);
-db.connectDB();
+db.connectDB(client.config.MongoURI);
 
 //anti crash
 process.on('unhandledRejection', (reason, p) => {
