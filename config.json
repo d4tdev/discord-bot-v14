@@ -1,0 +1,10 @@
+{
+   "token": "your-token",
+   "DevID": "your-token-id",
+   "MongoURI": "your-token-db",
+   "spotifyApi": {
+      "enable": true,
+      "clientID": "your-token",
+      "clientSecret": "your-token"
+   }
+}

@@ -1,10 +1,12 @@
+
 {
-   "token": "your-token",
-   "DevID": "your-token-id",
-   "MongoURI": "your-token-db",
+   "token": "OTAzMjMyOTYwNDE1ODA1NTEw.GV81Mi.Bgi4ZM6CBEmM2Er670KXfB7nV091H4JRK68jps",
+   "DevIDTest": "496563883453186048",
+   "DevID": "968119621544710195",
+   "MongoURI": "mongodb+srv://d4rtj:Akakokok02@discordbot.ghzgzu2.mongodb.net/discordBot?retryWrites=true&w=majority",
    "spotifyApi": {
-      "enable": true,
-      "clientID": "your-token",
-      "clientSecret": "your-token"
+      "enable": "true",
+      "clientID": "bc76a01257984c9f976047d64cd5d908",
+      "clientSecret": "0874615bcb604284be2ed74c341b0a0a"
    }
 }
