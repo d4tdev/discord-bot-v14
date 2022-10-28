@@ -1,0 +1,29 @@
+{
+  "name": "bot_v14",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/opus": "^0.8.0",
+    "@distube/spotify": "^1.4.2",
+    "ascii-table": "^0.0.9",
+    "axios": "^1.1.3",
+    "discord.js": "^14.6.0",
+    "distube": "^4.0.4",
+    "ffmpeg-static": "^4.4.1",
+    "glob": "^8.0.3",
+    "libsodium-wrappers": "^0.7.10",
+    "mongoose": "^6.6.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
