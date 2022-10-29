@@ -1,3 +1,5 @@
+const { ActivityType } = require('discord.js');
+
 const { loadCommands } = require('../../Handlers/commandHandler');
 
 module.exports = {
@@ -5,21 +7,25 @@ module.exports = {
    once: true,
    async execute(client) {
       await loadCommands(client);
-      console.log('The client is ready!');
+      console.log(`${client.user.tag} is ready!`);
       const statuses = [
-         'with d4rtj#8572',
-         `with ${client.guilds.cache.size} servers`,
-         `with ${client.users.cache.size} users`,
-         `with ${client.channels.cache.size} channels`,
-         'by Slash Commands [/]',
+         { name: 'd4rtj#8572 🔥', type: ActivityType.Listening },
+         { name: `by ${client.guilds.cache.size} servers 📺`, type: ActivityType.Watching },
+         { name: `by ${client.users.cache.size} users 👨‍💻`, type: ActivityType.Watching },
+         {
+            name: `by ${client.channels.cache.size} channels 🎞`,
+            type: ActivityType.Watching,
+         },
+         { name: 'by Slash Commands [/]', type: ActivityType.Playing }
       ];
 
-      let index = 0;
+      client.user.setPresence({ status: 'online', activity: statuses[0] });
+      let index = 1;
       setInterval(() => {
-         if (index === statuses.length) index = 0;
+         if (index > 4) index = 0;
 
          client.user.setActivity(statuses[index]);
          index++;
-      }, 2000);
+      }, 3000);
    },
 };
