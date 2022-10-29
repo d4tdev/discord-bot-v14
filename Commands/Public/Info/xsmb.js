@@ -48,7 +48,7 @@ module.exports = {
 
          const embed = new EmbedBuilder()
             .setAuthor({
-               name: 'Kết quả xổ số miền Bắc host',
+               name: 'Kết quả xổ số miền Bắc',
                iconURL: 'https://image.vietstock.vn/2022/01/07/220107_XS_1.jpg',
             })
             .setColor('#2a9454')
