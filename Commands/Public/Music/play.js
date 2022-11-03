@@ -2,27 +2,61 @@ const {
    ChatInputCommandInteraction,
    EmbedBuilder,
    SlashCommandBuilder,
-   PermissionFlagsBits,
 } = require('discord.js');
+const axios = require('axios');
 
 const ErrorHandler = require('../../../Functions/errorHandler');
+require('dotenv').config();
 
 module.exports = {
    data: new SlashCommandBuilder()
       .setName('play')
       .setDescription('Play a song.')
-      .setDefaultMemberPermissions(PermissionFlagsBits.CONNECT)
       .addStringOption(option =>
          option
             .setName('query')
             .setDescription('Provide the song name or link URL.')
             .setRequired(true)
+            .setAutocomplete(true)
       ),
 
    /**
     * @param {ChatInputCommandInteraction} interaction
     * @param {Client} client
     */
+   async autocomplete(interaction, client) {
+      let focusedValue = interaction.options.getFocused();
+      let searchSuggestions = [];
+      if (!focusedValue) {
+         searchSuggestions = [
+            'Đông Kiếm Em',
+            '24h LyLy',
+            'Chill Lofi',
+            'Mr.Siro',
+         ];
+         await interaction.respond(
+            searchSuggestions.map(choice => ({ name: choice, value: choice }))
+         );
+      }
+
+      // const data = process.env.YT_URL + focusedValue + '&type=video&key=' + process.env.YT_API_KEY;
+      const url = process.env.YT_URL + focusedValue;
+
+      const response = await axios.get(url);
+      console.log(response.data[1])
+      const data = response.data[1];
+
+      for (let i = 0; i < data.length; i++) {
+         searchSuggestions.push(data[i]);
+      }
+
+      await interaction.respond(
+         searchSuggestions.map(choice => ({
+            name: choice,
+            value: choice,
+         }))
+      );
+   },
    async execute(interaction, client) {
       const { options, guild, member, channel } = interaction;
 
