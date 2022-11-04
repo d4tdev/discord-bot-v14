@@ -47,24 +47,32 @@ module.exports = {
          .get(`https://api-conan.herokuapp.com/api/character/${character}`)
          .then(async res => {
             const data = res.data;
-            console.log(data)
 
-            const resAll = await axios.get('https://api-conan.herokuapp.com/api')
-            const dataAll = res.data.characters
+            const resImage = await axios.get(
+               `https://api-conan.herokuapp.com/api?name=${character}`
+            );
+            let dataImage = resImage.data.characters.map(data => data.picture);
+            dataImage = dataImage.toString();
+
             const embed = new EmbedBuilder()
                .setAuthor({
                   name: 'Conan Detective',
-                  url: 'https://cdnimg.vietnamplus.vn/t460/Uploaded/mzdiq/2016_08_07/conan2.PNG',
+                  iconURL: client.user.avatarURL(),
                })
+               .setThumbnail(dataImage)
                .addFields([
                   {
                      name: 'Tên tiếng Nhật',
-                     value: data.japanese_name ? data.japanese_name : 'Không xác định',
+                     value: data.japanese_name
+                        ? data.japanese_name
+                        : 'Không xác định',
                      inline: true,
                   },
                   {
                      name: 'Tên tiếng Anh',
-                     value: data.english_name ? data.english_name : 'Không xác định',
+                     value: data.english_name
+                        ? data.english_name
+                        : 'Không xác định',
                      inline: true,
                   },
                   {
@@ -84,7 +92,9 @@ module.exports = {
                   },
                   {
                      name: 'Sinh nhật',
-                     value: data.date_of_birth ? data.date_of_birth : 'Không xác định',
+                     value: data.date_of_birth
+                        ? data.date_of_birth
+                        : 'Không xác định',
                      inline: true,
                   },
                   {
@@ -103,7 +113,9 @@ module.exports = {
                   },
                   {
                      name: 'Nghề nghiệp',
-                     value: data.occupation? data.occupation : 'Không xác định',
+                     value: data.occupation
+                        ? data.occupation
+                        : 'Không xác định',
                   },
                ])
                .setImage(data.image)

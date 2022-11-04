@@ -179,7 +179,7 @@ client.distube
                new EmbedBuilder()
                   .setColor('Red')
                   .setDescription(
-                     `🚫 | An error has occurred!\n\n** ${e
+                     `🚫 | Oops! Một lỗi đã xảy ra\n\n** ${e
                         .toString()
                         .slice(0, 1974)}**`
                   ),
@@ -196,7 +196,7 @@ client.distube
          embeds: [
             new EmbedBuilder()
                .setColor('Red')
-               .setDescription(`🚫 | The room is empty! The bot has left!`),
+               .setDescription(`🚫 | Phòng không còn ai nữa, cô đơn quá :(`),
          ],
       });
 
@@ -211,7 +211,7 @@ client.distube
             embeds: [
                new EmbedBuilder()
                   .setColor('Red')
-                  .setDescription(`🚫 | No result found for \`${query}\`!`),
+                  .setDescription(`🚫 | Không tìm thấy kết quả cho \`${query}\`!`),
             ],
          });
 
@@ -226,7 +226,7 @@ client.distube
             new EmbedBuilder()
                .setColor(client.config.colorError)
                .setDescription(
-                  `🚫 | All songs on the playlist have been played!`
+                  `🚫 | Tất cả bài hát trong playlist đã phát xong!`
                ),
          ],
       });
@@ -239,7 +239,7 @@ client.distube
          embeds: [
             new EmbedBuilder()
                .setColor(client.config.colorError)
-               .setDescription(`🚫 | Song not found!`),
+               .setDescription(`🚫 | Bài hát không tìm thấy!`),
          ],
       });
       setTimeout(() => {
