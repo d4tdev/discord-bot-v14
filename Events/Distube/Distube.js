@@ -3,7 +3,7 @@ const { EmbedBuilder } = require('discord.js');
 
 const Format = Intl.NumberFormat();
 const status = queue =>
-   `Volume: \`${queue.volume}%\` | Filter: \`${
+   `Âm lượng: \`${queue.volume}%\` | Lọc: \`${
       queue.filters.names.join(', ') || 'Off'
    }\` | Loop: \`${
       queue.repeatMode
@@ -20,41 +20,41 @@ client.distube
             new EmbedBuilder()
                .setColor('#2a9454')
                .setAuthor({
-                  name: 'Now Playing',
+                  name: 'Đang phát',
                   iconURL: client.user.avatarURL(),
                })
                .setDescription(`> [**${song.name}**](${song.url})`)
                .setThumbnail(song.user.displayAvatarURL())
                .addFields([
                   {
-                     name: '🔷 | Status',
+                     name: '🔷 | Trạng thái',
                      value: `${status(queue).toString()}`,
                      inline: false,
                   },
                   {
-                     name: '👀 | Views',
+                     name: '👀 | Lượt xem',
                      value: `${Format.format(song.views)}`,
                      inline: true,
                   },
                   {
-                     name: '⏱️ | Time',
+                     name: '⏱️ | Thời gian',
                      value: `${song.formattedDuration}`,
                      inline: true,
                   },
                   {
-                     name: '👌 | Request by',
+                     name: '👌 | Yêu cầu bởi',
                      value: `${song.user}`,
                      inline: true,
                   },
                   {
-                     name: '📻 | Play music at',
+                     name: '📻 | Phát tại',
                      value: `
 ┕🔊 | ${client.channels.cache.get(queue.voiceChannel.id)}
 ┕🪄 | ${queue.voiceChannel.bitrate / 1000}  kbps`,
                      inline: false,
                   },
                   {
-                     name: '🤖 | Suggestions',
+                     name: '🤖 | Gợi ý bài tiếp theo',
                      value: `[${song.related[0].name}](${song.related[0].url})
 ┕⌛ | Time: ${song.related[0].formattedDuration} | 🆙 | Upload lên bởi: [${song.related[0].uploader.name}](${song.related[0].uploader.url})`,
                      inline: false,
@@ -62,7 +62,9 @@ client.distube
                ])
                .setImage(song.thumbnail)
                .setFooter({
-                  text: `${Format.format(queue.songs.length)} songs in queue`,
+                  text: `${Format.format(
+                     queue.songs.length
+                  )} bài hát trong hàng đợi`,
                }),
          ],
       });
@@ -82,24 +84,24 @@ client.distube
                new EmbedBuilder()
                   .setColor('#2a9454')
                   .setAuthor({
-                     name: 'Added to queue',
+                     name: 'Đã thêm vào hàng đợi',
                      iconURL: client.user.avatarURL(),
                   })
                   .setDescription(`> [**${song.name}**](${song.url})`)
                   .setThumbnail(song.user.displayAvatarURL())
                   .addFields([
                      {
-                        name: '👀 | Views',
+                        name: '👀 | Lượt xem',
                         value: `${Format.format(song.views)}`,
                         inline: true,
                      },
                      {
-                        name: '⏱️ | Time',
+                        name: '⏱️ | Thời gian',
                         value: `${song.formattedDuration}`,
                         inline: true,
                      },
                      {
-                        name: '👌 | Request by',
+                        name: '👌 | Yêu cầu bởi',
                         value: `${song.user}`,
                         inline: true,
                      },
@@ -108,7 +110,7 @@ client.distube
                   .setFooter({
                      text: `${Format.format(
                         queue.songs.length
-                     )} songs in queue`,
+                     )} bài hát trong hàng đợi`,
                   }),
             ],
          });
@@ -130,24 +132,24 @@ client.distube
                new EmbedBuilder()
                   .setColor('#2a9454')
                   .setAuthor({
-                     name: 'Added to queue',
+                     name: 'Đã thêm vào hàng đợi',
                      iconURL: client.user.avatarURL(),
                   })
                   .setDescription(`> [**${playlist.name}**](${playlist.url})`)
                   .setThumbnail(playlist.thumbnail)
                   .addFields([
                      {
-                        name: '👀 | Views',
+                        name: '👀 | Lượt xem',
                         value: `${Format.format(playlist.views)}`,
                         inline: true,
                      },
                      {
-                        name: '⏱️ | Time',
+                        name: '⏱️ | Thời gian',
                         value: `${playlist.formattedDuration}`,
                         inline: true,
                      },
                      {
-                        name: '👌 | Request by',
+                        name: '👌 | Được yêu cầu bởi',
                         value: `${playlist.user}`,
                         inline: true,
                      },
@@ -156,7 +158,7 @@ client.distube
                   .setFooter({
                      text: `${Format.format(
                         queue.songs.length
-                     )} songs in queue`,
+                     )} bài hát trong hàng đợi`,
                   }),
             ],
          });
@@ -173,7 +175,7 @@ client.distube
       //    );
       // else console.error(e);
       if (channel) {
-         console.log(e)
+         console.log(e);
          const result = await channel.send({
             embeds: [
                new EmbedBuilder()
@@ -211,7 +213,9 @@ client.distube
             embeds: [
                new EmbedBuilder()
                   .setColor('Red')
-                  .setDescription(`🚫 | Không tìm thấy kết quả cho \`${query}\`!`),
+                  .setDescription(
+                     `🚫 | Không tìm thấy kết quả cho \`${query}\`!`
+                  ),
             ],
          });
 

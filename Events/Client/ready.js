@@ -9,7 +9,7 @@ module.exports = {
       await loadCommands(client);
       console.log(`${client.user.tag} is ready!`);
       const statuses = [
-         { name: 'd4rtj#8572 🔥', type: ActivityType.Listening },
+         { name: 'dd4tj#8572 🔥', type: ActivityType.Listening },
          { name: `by ${client.guilds.cache.size} servers 📺`, type: ActivityType.Watching },
          { name: `by ${client.users.cache.size} users 👨‍💻`, type: ActivityType.Watching },
          {
