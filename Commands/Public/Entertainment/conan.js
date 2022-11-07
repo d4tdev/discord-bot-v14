@@ -6,7 +6,7 @@ const sex = {
 };
 
 module.exports = {
-   category: 'Information',
+   category: 'Entertainment',
    data: new SlashCommandBuilder()
       .setName('conan')
       .setDescription('Tìm kiếm thông tin nhân vật trong anime Conan!')

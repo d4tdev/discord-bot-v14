@@ -17,6 +17,7 @@ const award = {
 };
 
 module.exports = {
+   category: 'Entertainment',
    data: new SlashCommandBuilder()
       .setName('xsmb')
       .setDescription('Hiển thị kết quả số miền Bắc'),
@@ -38,7 +39,7 @@ module.exports = {
          const table = new Ascii(`Kết quả XSMB ngày: ${data.time}`);
          table.setBorder('|', '-', '+', '+');
          table.setHeading('Giải', 'Kết quả');
-         
+
          arrTimesNames.forEach((item) => {
             table.addRow(award[item.time], item.name);
          });

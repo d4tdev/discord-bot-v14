@@ -7,9 +7,10 @@ const {
 const ErrorHandler = require('../../../Functions/errorHandler');
 
 module.exports = {
+   category: 'Music',
    data: new SlashCommandBuilder()
       .setName('music')
-      .setDescription('Choose an options.')
+      .setDescription('Chọn các lựa chọn (stop, autoplay, loop, queue, skip,...).')
       .addStringOption(
          options =>
             options

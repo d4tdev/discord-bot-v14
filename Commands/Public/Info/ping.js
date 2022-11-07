@@ -4,6 +4,7 @@ const {
 } = require('discord.js');
 
 module.exports = {
+   category: 'Info',
    data: new SlashCommandBuilder()
       .setName('ping')
       .setDescription('Replies with Pong! and latency'),

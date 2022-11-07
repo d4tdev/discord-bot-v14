@@ -8,6 +8,7 @@ const InfractionsDB = require('../../Schema/Infractions');
 const ms = require('ms');
 
 module.exports = {
+   category: 'Moderation',
    data: new SlashCommandBuilder()
       .setName('timeout')
       .setDescription('Timeouts a member')

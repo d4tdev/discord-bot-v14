@@ -17,6 +17,7 @@ module.exports = {
    //       type: ApplicationCommandOptionType.User,
    //    },
    // ],
+   category: 'Info',
    data: new SlashCommandBuilder()
       .setName('userinfo')
       .setDescription(

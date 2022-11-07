@@ -7,6 +7,7 @@ const {
 const ErrorHandler = require('../../../Functions/errorHandler');
 
 module.exports = {
+   category: 'Music',
    data: new SlashCommandBuilder()
       .setName('volume')
       .setDescription('Changes the volume (1 - 100).')

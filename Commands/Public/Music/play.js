@@ -9,13 +9,14 @@ const ErrorHandler = require('../../../Functions/errorHandler');
 require('dotenv').config();
 
 module.exports = {
+   category: 'Music',
    data: new SlashCommandBuilder()
       .setName('play')
-      .setDescription('Play a song.')
+      .setDescription('Phát một bài hát hoặc một list nhạc.')
       .addStringOption(option =>
          option
             .setName('query')
-            .setDescription('Provide the song name or link URL.')
+            .setDescription('Nhập tên bài hoặc link URL.')
             .setRequired(true)
             .setAutocomplete(true)
       ),

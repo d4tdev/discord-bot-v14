@@ -9,6 +9,7 @@ const welcomeSchema = require('../../../Schema/WelComeMessage');
 const leaveSchema = require('../../../Schema/LeaveMessage');
 
 module.exports = {
+   category: 'Info',
    data: new SlashCommandBuilder()
       .setName('welcomer')
       .setDescription('set a welcome/leave message for your server')
@@ -47,7 +48,7 @@ module.exports = {
             .addStringOption(opt =>
                opt
                   .setName('message')
-                  .setDescription('Set a custom message for your leave messagw')
+                  .setDescription('Set a custom message for your leave message')
             )
             .addAttachmentOption(opt =>
                opt.setName('image').setDescription('Set an custom leave image')

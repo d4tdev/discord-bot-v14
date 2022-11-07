@@ -1,6 +1,7 @@
 const { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder } = require('discord.js');
 
 module.exports = {
+   category: 'Moderation',
    data: new SlashCommandBuilder()
       .setName('kick')
       .setDescription('Kicks a member')
