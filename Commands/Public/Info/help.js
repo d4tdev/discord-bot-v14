@@ -63,8 +63,8 @@ const getAllCommand = (client, interaction) => {
    categories.forEach(category => {
       const commands = client.commands.filter(c => c.category === category);
       embed.addFields({
-         name: `> ${category} (${commands.size}) `,
-         value: commands.map(c => `\`\/${c.data.name}\``).join(' '),
+         name: `🔹 ${category} (${commands.size}) `,
+         value: commands.map(c => `\`/${c.data.name}\``).join(' '),
       });
    });
 
@@ -88,17 +88,17 @@ const getCommand = (client, interaction) => {
       .setThumbnail(client.user.displayAvatarURL())
       .addFields(
          {
-            name: '> Tên command',
+            name: '🔹 Tên command',
             value: commandData.data.name,
             inline: true,
          },
          {
-            name: '> Danh mục',
+            name: '🔹 Danh mục',
             value: commandData.category,
             inline: false,
          },
          {
-            name: '> Mô tả',
+            name: '🔹 Mô tả',
             value: commandData.data.description,
             inline: false,
          }

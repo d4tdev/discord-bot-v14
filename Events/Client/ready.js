@@ -16,16 +16,17 @@ module.exports = {
             name: `by ${client.channels.cache.size} channels 🎞`,
             type: ActivityType.Watching,
          },
-         { name: 'by Slash Commands [/]', type: ActivityType.Playing }
+         { name: 'by Slash Commands [/]', type: ActivityType.Playing },
+         { name: ' /help ⚙️', type: ActivityType.Listening },
       ];
 
-      client.user.setPresence({ status: 'online', activity: statuses[0] });
+      await client.user.setPresence({ activities: statuses[0], status: 'online' });
       let index = 1;
-      setInterval(() => {
-         if (index > 4) index = 0;
+      setInterval(async () => {
+         if (index > 5) index = 0;
 
-         client.user.setActivity(statuses[index]);
+         await client.user.setActivity(statuses[index]);
          index++;
-      }, 3000);
+      }, 3500);
    },
 };

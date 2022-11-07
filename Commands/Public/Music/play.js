@@ -44,7 +44,7 @@ module.exports = {
       const url = process.env.YT_URL + focusedValue;
 
       const response = await axios.get(url);
-      console.log(response.data[1])
+      console.log(response.data[1]);
       const data = response.data[1];
 
       for (let i = 0; i < data.length; i++) {
@@ -65,7 +65,7 @@ module.exports = {
       if (!VoiceChannel) {
          return ErrorHandler(
             interaction,
-            'You need to in a Voice Channel to use this command.'
+            'Bạn phải ở trong một phòng Voice để sử dụng lệnh này !'
          );
       }
 
@@ -79,7 +79,7 @@ module.exports = {
             ) {
                return ErrorHandler(
                   interaction,
-                  `You need to be in the same Voice Channel as me to use this command. Music is already being played in ${guild.members.me.voice.channel}`
+                  `Bạn phải ở cùng một phòng Voice để sử dụng lệnh này. Bài hát đang được phát tại ${guild.members.me.voice.channel}`
                );
             }
          }
@@ -89,25 +89,27 @@ module.exports = {
             embeds: [
                new EmbedBuilder()
                   .setColor('#2a9454')
-                  .setDescription(`🔍 | Looking for a song...`),
+                  .setDescription(`🔍 | Đang tìm kiếm...`),
             ],
             ephemeral: true,
          });
 
-         client.distube.play(VoiceChannel, query, {
+         const isPlay = await client.distube.play(VoiceChannel, query, {
             textChannel: channel,
             member: member,
          });
 
-         await interaction.editReply({
-            embeds: [
-               new EmbedBuilder()
-                  .setTitle('Playing')
-                  .setColor('#2a9454')
-                  .setDescription(`🎶 - Request received`),
-            ],
-            ephemeral: true,
-         });
+         if (isPlay) {
+            await interaction.editReply({
+               embeds: [
+                  new EmbedBuilder()
+                     .setTitle('Phát nhạc')
+                     .setColor('#2a9454')
+                     .setDescription(`🎶 - Yêu cầu đã được thêm vào hàng chờ.`),
+               ],
+               ephemeral: true,
+            });
+         }
       } catch (e) {
          console.log(e);
          return ErrorHandler(interaction, `Alert: ${e}`);
