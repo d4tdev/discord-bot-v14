@@ -22,10 +22,10 @@ module.exports = {
 
       client.user.setPresence({ activities: statuses[0], status: 'online' });
       let index = 1;
-      setInterval(async () => {
+      setInterval(() => {
          if (index > 5) index = 0;
 
-         await client.user.setActivity(statuses[index]);
+         client.user.setActivity(statuses[index]);
          index++;
       }, 3500);
    },
