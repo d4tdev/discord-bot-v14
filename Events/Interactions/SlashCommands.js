@@ -13,14 +13,14 @@ module.exports = {
 
          if (!command) {
             return interaction.reply({
-               content: 'This command is outdated.',
+               content: 'Lệnh này đang không sử dụng được.',
                ephemeral: true,
             });
          }
 
          if (command.developer && interaction.user.id !== process.env.DEV_ID) {
             return interaction.reply({
-               content: 'This command is only for the developer.',
+               content: 'Lệnh này chỉ dành cho nhà phát triển.',
                ephemeral: true,
             });
          }
@@ -33,7 +33,7 @@ module.exports = {
                subCommandFile.execute(interaction, client);
             } else {
                return interaction.reply({
-                  content: 'This subcommand is outdated.',
+                  content: 'Lệnh này đang không sử dụng được.',
                   ephemeral: true,
                });
             }
@@ -43,7 +43,7 @@ module.exports = {
 
          if (!command)
             return interaction.reply({
-               content: 'This command is outdated.',
+               content: 'Lệnh này đang không sử dụng được.',
                ephemeral: true,
             });
 

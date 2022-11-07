@@ -6,7 +6,7 @@ const {
 module.exports = {
    data: new SlashCommandBuilder()
       .setName('ping')
-      .setDescription('Replies with Pong!'),
+      .setDescription('Replies with Pong! and latency'),
    /**
     *
     * @param {ChatInputCommandInteraction} interaction
@@ -14,7 +14,7 @@ module.exports = {
     */
    execute(interaction, client) {
       interaction.reply({
-         content: `🏓 Pong!\nAPI Latency: ${client.ws.ping} ms\nBot Latency: ${ - interaction.createdTimestamp} ms`,
+         content: `🏓 Pong!\nAPI Latency: ${Math.round(client.ws.ping)} ms\nBot Latency: ${Date.now() - interaction.createdTimestamp} ms`,
          ephemeral: true,
       });
    },
