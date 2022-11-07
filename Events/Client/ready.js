@@ -20,7 +20,7 @@ module.exports = {
          { name: ' /help ⚙️', type: ActivityType.Listening },
       ];
 
-      // await client.user.setPresence({ activities: statuses[0], status: 'online' });
+      client.user.setPresence({ activities: statuses[0], status: 'online' });
       let index = 1;
       setInterval(async () => {
          if (index > 5) index = 0;
