@@ -23,7 +23,7 @@ const loadCommands = async (client) => {
 
    client.application.commands.set(commandsArray);
 
-   return console.log(table.toString(), '\nLoaded Commands');
+   return console.log(table.toString(), '\nLoaded Slash Commands');
 }
 
 module.exports = { loadCommands };

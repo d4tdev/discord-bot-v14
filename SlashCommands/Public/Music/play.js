@@ -28,27 +28,44 @@ module.exports = {
    async autocomplete(interaction, client) {
       let focusedValue = interaction.options.getFocused();
       let searchSuggestions = [];
-      if (!focusedValue) {
+      if (focusedValue === '') {
          searchSuggestions = [
             'Đông Kiếm Em',
             '24h LyLy',
             'Chill Lofi',
             'Mr.Siro',
          ];
-         await interaction.respond(
+         return await interaction.respond(
             searchSuggestions.map(choice => ({ name: choice, value: choice }))
          );
       }
 
       // const data = process.env.YT_URL + focusedValue + '&type=video&key=' + process.env.YT_API_KEY;
-      const url = process.env.YT_URL + focusedValue;
+      const url =
+         'http://suggestqueries.google.com/complete/search?client=chrome&output=json&ds=yt&q=' +
+         encodeURIComponent(focusedValue);
 
-      const response = await axios.get(url);
-      console.log(response.data[1]);
-      const data = response.data[1];
+      const response = await axios.get(url, { responseType: 'arraybuffer' });
 
+      let data = [];
+      data = JSON.parse(response.data.toString('latin1'))[1].map(
+         item =>
+            new Object({
+               value: item,
+            })
+      );
+
+      // nowValue, ...suggestValue
+      data = [
+         {
+            value: focusedValue,
+         },
+         ...data,
+      ];
+
+      console.log(data);
       for (let i = 0; i < data.length; i++) {
-         searchSuggestions.push(data[i]);
+         searchSuggestions.push(data[i].value);
       }
 
       await interaction.respond(

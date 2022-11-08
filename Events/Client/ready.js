@@ -1,12 +1,14 @@
 const { ActivityType } = require('discord.js');
 
 const { loadCommands } = require('../../Handlers/commandHandler');
+const { loadMessages } = require('../../Handlers/messageHandler');
 
 module.exports = {
    name: 'ready',
    once: true,
    async execute(client) {
       await loadCommands(client);
+      // await loadMessages(client);
       console.log(`${client.user.tag} is ready!`);
       const statuses = [
          {
@@ -36,7 +38,7 @@ module.exports = {
       let index = 0;
       setInterval(() => {
          if (index >= statuses.length ) index = 0;
-         
+
          client.user.setActivity(statuses[index]);
          index++;
       }, 3500);

@@ -69,6 +69,7 @@ module.exports = client;
 
 client.commands = new Collection();
 client.subCommands = new Collection();
+client.messages = new Collection();
 client.events = new Collection();
 
 loadEvents(client);
