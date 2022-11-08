@@ -17,30 +17,30 @@ module.exports = {
     * @param {String[]} args
     **/
    async execute(message, client) {
-
       const msgMention = message.mentions.users.first();
       if (msgMention) {
-
          if (msgMention.id === process.env.BOT_ID) {
-            message.reply(
-               {
+            message.reply({
                embeds: [
                   new EmbedBuilder()
                      .setColor('2a9454')
+                     .setAuthor({
+                        name: 'Xin chào bạn. Bạn đang tìm gì ở mình nhỉ',
+                        iconURL: client.user.displayAvatarURL({
+                           dynamic: true,
+                        }),
+                     })
                      .setDescription(
-                        'Vui lòng sử dụng Slash Command (**/help** để xem các câu lệnh)!'
-                     ),
+                        'Gọi mình thì sử dụng Slash Command nhé (**/help** để xem các câu lệnh)!'
+                     )
                ],
-            }
-
-            );
+            });
          }
       }
       if (message.author.bot || !message.content.startsWith(process.env.PREFIX))
          return;
       if (message.channel.type === 'DM') return;
       if (message.author.id === process.env.BOT_ID) return;
-
 
       if (message.content.startsWith(process.env.PREFIX)) {
          const args = message.content
@@ -54,14 +54,19 @@ module.exports = {
                embeds: [
                   new EmbedBuilder()
                      .setColor('2a9454')
+                     .setAuthor({
+                        name: 'Xin chào bạn. Bạn đang tìm gì ở mình nhỉ',
+                        iconURL: client.user.displayAvatarURL({
+                           dynamic: true,
+                        }),
+                     })
                      .setDescription(
-                        'Vui lòng sử dụng Slash Command (**/help** để xem các câu lệnh)!'
+                        'Gọi mình thì sử dụng Slash Command nhé (**/help** để xem các câu lệnh)!'
                      ),
                ],
             });
          }
-         if (command ==='play') {
-            
+         if (command === 'play') {
          }
       }
    },
