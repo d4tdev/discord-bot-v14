@@ -1,14 +1,14 @@
 const loadCommands = async (client) => {
    const { loadFiles } = require('../Functions/fileLoader');
    const ascii = require('ascii-table');
-   const table = new ascii().setHeading('Commands', 'Status');
+   const table = new ascii().setHeading('SlashCommands', 'Status');
 
    await client.commands.clear();
    await client.subCommands.clear();
 
    let commandsArray = [];
 
-   const Files = await loadFiles('Commands')
+   const Files = await loadFiles('SlashCommands')
 
    Files.forEach(file => {
       const command = require(file);

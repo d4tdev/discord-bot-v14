@@ -10,8 +10,14 @@ const {
    GuildMessages,
    GuildVoiceStates,
    GuildPresences,
+   MessageContent,
+   GuildMessageReactions,
+   GuildMessageTyping,
+   DirectMessages,
+   DirectMessageReactions,
+   DirectMessageTyping,
 } = GatewayIntentBits;
-const { User, Message, ThreadMember } = Partials;
+const { User, Message, ThreadMember, Channel } = Partials;
 
 const client = new Client({
    intents: [
@@ -20,8 +26,14 @@ const client = new Client({
       GuildMessages,
       GuildVoiceStates,
       GuildPresences,
+      MessageContent,
+      GuildMessageReactions,
+      GuildMessageTyping,
+      DirectMessages,
+      DirectMessageReactions,
+      DirectMessageTyping,
    ],
-   partials: [User, Message, ThreadMember],
+   partials: [User, Message, ThreadMember, Channel],
 });
 require('dotenv').config();
 
