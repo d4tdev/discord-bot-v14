@@ -36,7 +36,7 @@ module.exports = {
       const target =
          interaction.options.getMember('target') || interaction.member;
       const { user, presence, roles } = target;
-      console.log(presence);
+
       const formatter = new Intl.ListFormat('en-GB', {
          style: 'narrow',
          type: 'conjunction',
@@ -210,5 +210,8 @@ module.exports = {
          ],
          // ephemeral: true,
       });
+      console.log(
+         'Sử dụng thành công lệnh /UserInfo'
+      )
    },
 };

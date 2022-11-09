@@ -1,9 +1,9 @@
-const { EmbedBuilder, Client, version } = require('discord.js');
+const { EmbedBuilder, Client, version, Message } = require('discord.js');
 
 module.exports = {
    name: 'ping',
    aliases: [' '],
-   category: '⚙️ - Thông tin',
+   category: 'Info',
    description: 'Ping bot',
    /**
     *
@@ -11,7 +11,7 @@ module.exports = {
     * @param {Message} message
     * @param {String[]} args
     */
-   run: async (client, message, args) => {
+   async execute (message, client, args)  {
       const embed = new EmbedBuilder()
          .addFields(
             {

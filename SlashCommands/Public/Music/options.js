@@ -10,7 +10,9 @@ module.exports = {
    category: 'Music',
    data: new SlashCommandBuilder()
       .setName('music')
-      .setDescription('Chọn các lựa chọn (stop, autoplay, loop, queue, skip,...).')
+      .setDescription(
+         'Chọn các lựa chọn (stop, autoplay, loop, queue, skip,...).'
+      )
       .addStringOption(
          options =>
             options

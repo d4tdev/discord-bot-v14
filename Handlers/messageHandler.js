@@ -12,15 +12,13 @@ const loadMessages = async (client) => {
    Files.forEach(file => {
       const command = require(file);
 
-      console.log(command.name)
-
       client.messages.set(command.name, command);
-      commandsArray.push(command.name);
+      commandsArray.push(command);
 
       table.addRow(command.name, '✅');
    });
 
-   client.application.messages.set(commandsArray);
+   // client.application.messages.set(commandsArray);
 
    return console.log(table.toString(), '\nLoaded Commands');
 }
