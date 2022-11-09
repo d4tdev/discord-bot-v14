@@ -225,7 +225,7 @@ client.distube
       }
    )
    .on('finish', async queue => {
-      const result = await queue.textChannel.send({
+      const result = await queue.textChannel?.send({
          embeds: [
             new EmbedBuilder()
                .setColor('#2a9454')

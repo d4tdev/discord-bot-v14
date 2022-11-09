@@ -63,7 +63,6 @@ module.exports = {
          ...data,
       ];
 
-      console.log(data);
       for (let i = 0; i < data.length; i++) {
          searchSuggestions.push(data[i].value);
       }
@@ -111,7 +110,7 @@ module.exports = {
             ephemeral: true,
          });
 
-         await client.distube.play(VoiceChannel, query, {
+         client.distube.play(VoiceChannel, query, {
             textChannel: channel,
             member: member,
          });
@@ -125,6 +124,7 @@ module.exports = {
             ],
             ephemeral: true,
          });
+         console.log('Sử dụng thành công lệnh /play');
       } catch (e) {
          console.log(e);
          return ErrorHandler(interaction, `Alert: ${e}`);

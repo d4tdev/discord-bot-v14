@@ -210,8 +210,6 @@ module.exports = {
          ],
          // ephemeral: true,
       });
-      console.log(
-         'Sử dụng thành công lệnh /UserInfo'
-      )
+      console.log('Sử dụng thành công lệnh /userinfo');
    },
 };

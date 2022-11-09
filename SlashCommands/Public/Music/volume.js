@@ -61,6 +61,7 @@ module.exports = {
 
          client.distube.setVolume(VoiceChannel, percent);
 
+         console.log('Sử dụng thành công lệnh /volume');
          return interaction.reply({
             embeds: [
                new EmbedBuilder()
