@@ -50,7 +50,7 @@ let spotifyOptions = {
 };
 
 client.distube = new DisTube(client, {
-   leaveOnStop: false,
+   leaveOnStop: true,
    leaveOnEmpty: true,
    emitNewSongOnly: true,
    emitAddSongWhenCreatingQueue: true,
