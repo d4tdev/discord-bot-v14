@@ -162,19 +162,26 @@ module.exports = {
                });
             }
             case 'autoplay': {
-               await queue.toggleAutoplay(VoiceChannel);
+               try {
+                  await queue.toggleAutoplay(VoiceChannel);
 
-               return interaction.reply({
-                  embeds: [
-                     new EmbedBuilder()
+                  console.log('Sử dụng thành công lệnh /music autoplay');
+                  return interaction.reply({
+                     embeds: [
+                        new EmbedBuilder()
 
-                        .setTitle('🔁 - Auto Play')
-                        .setDescription(
-                           `Auto Play is now ${queue.autoplay ? 'on' : 'off'}.`
-                        )
-                        .setColor('#2a9454'),
-                  ],
-               });
+                           .setTitle('🔁 - Auto Play')
+                           .setDescription(
+                              `Auto Play is now ${
+                                 queue.autoplay ? 'on' : 'off'
+                              }.`
+                           )
+                           .setColor('#2a9454'),
+                     ],
+                  });
+               } catch (err) {
+                  return ErrorHandler(interaction, 'Không có bài hát nào.');
+               }
             }
             case 'queue': {
                const tracks = queue.songs.map(
