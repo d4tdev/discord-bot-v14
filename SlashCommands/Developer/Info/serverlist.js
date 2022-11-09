@@ -34,7 +34,7 @@ module.exports = {
                      name: 'Danh sách các server mà bot đang ở',
                      iconURL: client.user.avatarURL(),
                   })
-                  .setColor('2a9454')
+                  .setColor('#2a9454')
                   .setTitle(`Tổng số server: ${client.guilds.cache.size}`)
                   .setDescription(arrays.map(array => array).join('\n')),
             ],

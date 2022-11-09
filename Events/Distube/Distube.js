@@ -228,7 +228,7 @@ client.distube
       const result = await queue.textChannel.send({
          embeds: [
             new EmbedBuilder()
-               .setColor(client.config.colorError)
+               .setColor('#2a9454')
                .setDescription(
                   `🚫 | Tất cả bài hát trong playlist đã phát xong!`
                ),
@@ -242,7 +242,7 @@ client.distube
       const result = await queue.textChannel.send({
          embeds: [
             new EmbedBuilder()
-               .setColor(client.config.colorError)
+               .setColor('Red')
                .setDescription(`🚫 | Bài hát không tìm thấy!`),
          ],
       });
