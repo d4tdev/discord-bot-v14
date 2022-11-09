@@ -8,7 +8,7 @@ module.exports = {
    once: true,
    async execute(client) {
       await loadCommands(client);
-      await loadMessages(client);
+
       console.log(`${client.user.tag} is ready!`);
       const statuses = [
          {
