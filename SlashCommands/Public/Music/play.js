@@ -115,6 +115,7 @@ module.exports = {
             member: member,
          });
 
+         console.log('Sử dụng thành công lệnh /play');
          await interaction.editReply({
             embeds: [
                new EmbedBuilder()
@@ -124,7 +125,6 @@ module.exports = {
             ],
             ephemeral: true,
          });
-         console.log('Sử dụng thành công lệnh /play');
       } catch (e) {
          console.log(e);
          return ErrorHandler(interaction, `Alert: ${e}`);
