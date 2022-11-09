@@ -111,22 +111,20 @@ module.exports = {
             ephemeral: true,
          });
 
-         const isPlay = await client.distube.play(VoiceChannel, query, {
+         await client.distube.play(VoiceChannel, query, {
             textChannel: channel,
             member: member,
          });
 
-         if (isPlay) {
-            await interaction.editReply({
-               embeds: [
-                  new EmbedBuilder()
-                     .setTitle('Phát nhạc')
-                     .setColor('#2a9454')
-                     .setDescription(`🎶 - Yêu cầu đã được thêm vào hàng chờ.`),
-               ],
-               ephemeral: true,
-            });
-         }
+         await interaction.editReply({
+            embeds: [
+               new EmbedBuilder()
+                  .setTitle('Phát nhạc')
+                  .setColor('#2a9454')
+                  .setDescription(`🎶 - Yêu cầu đã được thêm vào hàng chờ.`),
+            ],
+            ephemeral: true,
+         });
       } catch (e) {
          console.log(e);
          return ErrorHandler(interaction, `Alert: ${e}`);
