@@ -10,7 +10,7 @@ module.exports = {
    category: 'Music',
    data: new SlashCommandBuilder()
       .setName('volume')
-      .setDescription('Changes the volume (1 - 100).')
+      .setDescription('Chỉnh âm lượng (1 - 200).')
       .addIntegerOption(option =>
          option
             .setName('percent')
@@ -29,13 +29,11 @@ module.exports = {
       if (!VoiceChannel) {
          return ErrorHandler(
             interaction,
-            'You need to in a Voice Channel to use this command.'
+            '🚫 | Bạn phải ở trong một phòng Voice để sử dụng lệnh này !'
          );
       }
 
       const queue = await client.distube.getQueue(VoiceChannel);
-      console.log(client.distube.getQueue(VoiceChannel));
-      console.log('\n\n\n\n\n' + client.distube.getQueue(interaction));
 
       if (queue) {
          if (
@@ -44,7 +42,7 @@ module.exports = {
          ) {
             return ErrorHandler(
                interaction,
-               `You need to be in the same Voice Channel as me to use this command. Music is already being played in ${guild.members.me.voice.channel}`
+               `🚫 | Bạn phải ở cùng một phòng Voice để sử dụng lệnh này. Bài hát đang được phát tại ${guild.members.me.voice.channel}`
             );
          }
       }
@@ -52,26 +50,26 @@ module.exports = {
       try {
          const percent = options.getInteger('percent');
 
-         if (percent < 1 || percent > 100) {
+         if (percent < 1 || percent > 200) {
             return ErrorHandler(
                interaction,
-               '🔊 - Volume must be between 1 and 100.'
+               '🔊 - Âm lượng phải trong khoảng 1 đến 200.'
             );
          }
 
          client.distube.setVolume(VoiceChannel, percent);
 
-         console.log('Sử dụng thành công lệnh /volume');
+         console.log(`Sử dụng thành công lệnh /volume của ${member.user.tag}`);
          return interaction.reply({
             embeds: [
                new EmbedBuilder()
                   .setTitle('Volume')
                   .setColor('#2a9454')
-                  .setDescription(`🔊 - Volume set to **${percent}**`),
+                  .setDescription(`🔊 - Âm lượng được đặt ở **${percent}**%`),
             ],
          });
       } catch (e) {
-         return ErrorHandler(interaction, `Alert: ${e}`);
+         return ErrorHandler(interaction, `${e}`);
       }
    },
 };

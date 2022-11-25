@@ -81,7 +81,7 @@ module.exports = {
       if (!VoiceChannel) {
          return ErrorHandler(
             interaction,
-            'Bạn phải ở trong một phòng Voice để sử dụng lệnh này !'
+            '🚫 | Bạn phải ở trong một phòng Voice để sử dụng lệnh này !'
          );
       }
 
@@ -95,7 +95,7 @@ module.exports = {
             ) {
                return ErrorHandler(
                   interaction,
-                  `Bạn phải ở cùng một phòng Voice để sử dụng lệnh này. Bài hát đang được phát tại ${guild.members.me.voice.channel}`
+                  `🚫 | Bạn phải ở cùng một phòng Voice để sử dụng lệnh này. Bài hát đang được phát tại ${guild.members.me.voice.channel}`
                );
             }
          }
@@ -110,13 +110,16 @@ module.exports = {
             ephemeral: true,
          });
 
-         client.distube.play(VoiceChannel, query, {
+         await client.distube.play(VoiceChannel, query, {
             textChannel: channel,
             member: member,
          });
 
-         console.log('Sử dụng thành công lệnh /play');
-         await interaction.editReply({
+         console.log(
+            `Sử dụng thành công lệnh /play + ${query} của ${member.user.tag}`
+         );
+
+         return await interaction.editReply({
             embeds: [
                new EmbedBuilder()
                   .setTitle('Phát nhạc')
@@ -127,7 +130,7 @@ module.exports = {
          });
       } catch (e) {
          console.log(e);
-         return ErrorHandler(interaction, `Alert: ${e}`);
+         return ErrorHandler(interaction, `Không tìm thấy bài hát này !`);
       }
    },
 };
